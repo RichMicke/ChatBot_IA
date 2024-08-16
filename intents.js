@@ -1,0 +1,2 @@
+// tipo de preguntas 
+
