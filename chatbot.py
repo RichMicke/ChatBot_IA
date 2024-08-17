@@ -1,56 +1,63 @@
 import numpy as np
-import json
-import random  # Importar random
-import pickle  # Importar pickle
-from keras.models import load_model
 import nltk
 from nltk.stem import WordNetLemmatizer
+import json
+import pickle
+from keras.models import load_model
+import random
 
-# Carga del modelo
+# Cargar el modelo entrenado
 model = load_model('chatbot_model.h5')
 
-# Carga de los datos de intenciones y clases
-intents = json.loads(open('intents.json').read())
+# Cargar los datos de palabras y clases
 words = pickle.load(open('words.pkl', 'rb'))
 classes = pickle.load(open('classes.pkl', 'rb'))
 
+# Inicializar el lematizador
 lemmatizer = WordNetLemmatizer()
 
+# Cargar las intenciones
+with open('intents.json') as file:
+    intents = json.load(file)
+
 def clean_up_sentence(sentence):
-    # Tokeniza la oración y aplica lematización
+    """Limpia y tokeniza la oración."""
     sentence_words = nltk.word_tokenize(sentence)
     sentence_words = [lemmatizer.lemmatize(word.lower()) for word in sentence_words]
     return sentence_words
 
-def bag_of_words(sentence):
-    # Crea una bolsa de palabras para la oración
+def bow(sentence, words, show_details=True):
+    """Convierte una oración en un vector de la bolsa de palabras."""
     sentence_words = clean_up_sentence(sentence)
     bag = [0]*len(words)
-    for w in sentence_words:
-        for i, word in enumerate(words):
-            if word == w:
+    for s in sentence_words:
+        for i, w in enumerate(words):
+            if w == s:
                 bag[i] = 1
     return np.array(bag)
 
-def predict_class(sentence):
-    # Predice la clase de la oración
-    bag = bag_of_words(sentence)
-    prediction = model.predict(np.array([bag]))[0]
-    max_index = np.argmax(prediction)
-    return classes[max_index]
-
-def get_response(intents_json, predicted_class):
-    # Obtiene la respuesta correspondiente a la intención predicha
-    for intent in intents_json['intents']:
-        if intent['tag'] == predicted_class:
+def get_response(intents_list, predicted_class):
+    """Obtiene una respuesta basada en la clase predicha."""
+    tag = predicted_class
+    for intent in intents_list['intents']:
+        if tag == intent['tag']:
             response = random.choice(intent['responses'])
             return response
+    return "Lo siento, no entiendo tu pregunta."
 
-print("Bot is running!")
+def chatbot_response(msg):
+    """Genera una respuesta del chatbot basada en el mensaje del usuario."""
+    p = bow(msg, words, show_details=False)
+    prediction = model.predict(np.array([p]))[0]
+    max_index = np.argmax(prediction)
+    tag = classes[max_index]
+    return get_response(intents, tag)
+
+# Interactuar con el usuario
 while True:
-    user_input = input("You: ")
-    if user_input.lower() == 'exit':
+    user_input = input("Tú: ")
+    if user_input.lower() in ["salir", "exit", "quit"]:
+        print("ChatMiguelIA: ¡Adiós!")
         break
-    predicted_class = predict_class(user_input)
-    response = get_response(intents, predicted_class)
-    print("Bot:", response)
+    response = chatbot_response(user_input)
+    print(f"ChatMiguelIA: {response}")

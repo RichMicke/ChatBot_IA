@@ -2,13 +2,43 @@
     "intents": [
         {
             "tag": "saludo",
-            "patterns": ["hola", "que tal", "como estas", "saludos"],
-            "responses": ["Hola!", "Buenos días", "No me jodas"]
+            "patterns": ["hola", "qué tal", "cómo estás", "saludos"],
+            "responses": ["¡Hola! ¿Cómo puedo ayudarte hoy?", "¡Hola! ¿En qué puedo asistirte?", "¡Hola! ¿Qué tal tu día?"]
         },
         {
             "tag": "nombre",
-            "patterns": ["¿cual es tu nombre?", "como te llamas", "cuantos años tienes", "apoco si muy chido"],
-            "responses": ["Me llamo Miguel", "no sé solo soy una inteligencia artificial", "tal vez"]
+            "patterns": ["¿cuál es tu nombre?", "cómo te llamas", "cuántos años tienes"],
+            "responses": ["Me llamo Miguel. ¿Y tú?", "Soy un chatbot creado para ayudarte. ¿Cómo te llamas?", "No tengo edad, soy un programa de computadora."]
+        },
+        {
+            "tag": "despedida",
+            "patterns": ["adiós", "hasta luego", "nos vemos", "chau"],
+            "responses": ["¡Adiós! Que tengas un buen día.", "¡Hasta luego! Espero hablar contigo pronto.", "¡Cuídate! Nos vemos en otra ocasión."]
+        },
+        {
+            "tag": "agradecimiento",
+            "patterns": ["gracias", "te lo agradezco", "muchas gracias"],
+            "responses": ["¡De nada! Estoy aquí para ayudarte.", "¡Un placer asistirte!", "¡No hay de qué! Si necesitas algo más, aquí estoy."]
+        },
+        {
+            "tag": "informacion",
+            "patterns": ["cuéntame sobre ti", "¿qué puedes hacer?", "¿cómo funcionas?"],
+            "responses": ["Soy un chatbot diseñado para ayudarte con tus preguntas y mantener una conversación.", "Puedo responder a tus preguntas y aprender de nuestras conversaciones.", "Estoy aquí para asistirte en lo que necesites, desde información general hasta soporte."]
+        },
+        {
+            "tag": "clima",
+            "patterns": ["¿cómo está el clima?", "¿qué tiempo hace hoy?", "cuéntame sobre el clima"],
+            "responses": ["Lo siento, no puedo verificar el clima en este momento. ¿Hay algo más en lo que pueda ayudarte?", "No tengo acceso a información meteorológica. ¿Cómo puedo asistirte en otra cosa?"]
+        },
+        {
+            "tag": "horario",
+            "patterns": ["¿qué hora es?", "¿me puedes decir la hora?", "¿qué hora tienes?"],
+            "responses": ["Lo losiento, no tengo acceso a la hora actual. ¿Hay algo más en lo que pueda ayudarte?", "No puedo decirte la hora. ¿Te puedo ayudar con algo más?"]
+        },
+        {
+            "tag": "jokes",
+            "patterns": ["cuéntame un chiste", "dime un chiste", "¿tienes algún chiste?"],
+            "responses": ["¿Por qué los pájaros no usan Facebook? Porque ya tienen Twitter.", "¿Qué hace una abeja en el gimnasio? ¡Zum-ba!"]
         }
     ]
 }
