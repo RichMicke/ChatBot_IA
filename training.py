@@ -1,20 +1,19 @@
-import random
-import json
-import pickle
 import numpy as np
-
 import nltk
 from nltk.stem import WordNetLemmatizer
-
+import json
+import pickle
 from keras.models import Sequential
-from keras.layers import Dense, Activation, Dropout
+from keras.layers import Dense, Dropout
 from keras.optimizers import SGD
+import random
 
 # Inicialización del lematizador
 lemmatizer = WordNetLemmatizer()
 
 # Carga del archivo intents.json
-intents = json.loads(open("intents.json").read())
+with open("intents.json") as file:
+    intents = json.load(file)
 
 # Descarga de los paquetes necesarios de NLTK (Natural Language Toolkit)
 nltk.download('punkt')
@@ -36,8 +35,9 @@ for intent in intents['intents']:
             classes.append(intent["tag"])
 
 # Lematiza las palabras y elimina los caracteres ignorados
-words = [lemmatizer.lemmatize(word) for word in words if word not in ignore_letters]
+words = [lemmatizer.lemmatize(word.lower()) for word in words if word not in ignore_letters]
 words = sorted(set(words))
+
 classes = sorted(set(classes))
 
 # Guarda las palabras y clases en archivos pickle
@@ -59,12 +59,31 @@ for document in documents:
     output_row[classes.index(document[1])] = 1
     training.append([bag, output_row])
 
+# Mezcla los datos de entrenamiento
 random.shuffle(training)
 training = np.array(training, dtype=object)
 
 train_x = np.array([item[0] for item in training])
 train_y = np.array([item[1] for item in training])
 
-print(train_x)
+# Verificar la consistencia de los datos antes de convertir a un array de NumPy
+print(f"Longitudes de bag: {[len(item[0]) for item in training]}")
+print(f"Longitudes de output_row: {[len(item[1]) for item in training]}")
 
+# Define el modelo
+model = Sequential()
+model.add(Dense(128, input_shape=(len(train_x[0]),), activation='relu'))
+model.add(Dropout(0.5))
+model.add(Dense(64, activation='relu'))
+model.add(Dropout(0.5))
+model.add(Dense(len(train_y[0]), activation='softmax'))
 
+# Compila el modelo
+model.compile(loss='categorical_crossentropy', optimizer=SGD(learning_rate=0.01, momentum=0.9), metrics=['accuracy'])
+
+# Entrena el modelo
+model.fit(train_x, train_y, epochs=200, batch_size=5, verbose=1)
+
+# Guarda el modelo
+model.save('chatbot_model.h5')
+print("Modelo guardado como 'chatbot_model.h5'")
