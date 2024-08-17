@@ -2,21 +2,20 @@ import random
 import json
 import pickle
 import numpy as np
-
 import nltk
 from nltk.stem import WordNetLemmatizer
-
 from keras.models import Sequential
-from keras.layers import Dense, Activation, Dropout
+from keras.layers import Dense, Dropout
 from keras.optimizers import SGD
 
 # Inicialización del lematizador
 lemmatizer = WordNetLemmatizer()
 
-# Carga del archivo intents.json
-intents = json.loads(open("intents.json").read())
+# Cargar el archivo intents.json
+with open("intents.json") as file:
+    intents = json.load(file)
 
-# Descarga de los paquetes necesarios de NLTK (Natural Language Toolkit)
+# Descargar los paquetes necesarios de NLTK
 nltk.download('punkt')
 nltk.download('wordnet')
 nltk.download('omw-1.4')
@@ -26,7 +25,7 @@ classes = []
 documents = []
 ignore_letters = ['?', '!', '¿', '.', ',']
 
-# Itera sobre cada intención en el archivo intents.json
+# Procesar los datos
 for intent in intents['intents']:
     for pattern in intent['patterns']:
         word_list = nltk.word_tokenize(pattern)
@@ -35,19 +34,18 @@ for intent in intents['intents']:
         if intent["tag"] not in classes:
             classes.append(intent["tag"])
 
-# Lematiza las palabras y elimina los caracteres ignorados
-words = [lemmatizer.lemmatize(word) for word in words if word not in ignore_letters]
+words = [lemmatizer.lemmatize(word.lower()) for word in words if word not in ignore_letters]
 words = sorted(set(words))
+
 classes = sorted(set(classes))
 
-# Guarda las palabras y clases en archivos pickle
 pickle.dump(words, open("words.pkl", "wb"))
 pickle.dump(classes, open("classes.pkl", "wb"))
 
 training = []
 output_empty = [0] * len(classes)
 
-# Creación del conjunto de entrenamiento
+# Crear el conjunto de entrenamiento
 for document in documents:
     bag = []
     word_patterns = document[0]
@@ -65,6 +63,21 @@ training = np.array(training, dtype=object)
 train_x = np.array([item[0] for item in training])
 train_y = np.array([item[1] for item in training])
 
-print(train_x)
+# Definir el modelo
+model = Sequential()
+model.add(Dense(128, input_shape=(len(train_x[0]),), activation='relu'))
+model.add(Dropout(0.5))
+model.add(Dense(64, activation='relu'))
+model.add(Dropout(0.5))
+model.add(Dense(len(train_y[0]), activation='softmax'))
 
+# Compilar el modelo
+sgd = SGD(learning_rate=0.01, decay=1e-6, momentum=0.9, nesterov=True)
+model.compile(loss='categorical_crossentropy', optimizer=sgd, metrics=['accuracy'])
 
+# Entrenar el modelo
+model.fit(train_x, train_y, epochs=200, batch_size=5, verbose=1)
+
+# Guardar el modelo entrenado
+model.save("chatbot_model.h5")
+print("Modelo entrenado y guardado")
