@@ -6,6 +6,7 @@ import pickle
 from keras.models import Sequential
 from keras.layers import Dense, Dropout
 from keras.optimizers import SGD
+import random
 
 # Inicialización del lematizador
 lemmatizer = WordNetLemmatizer()
@@ -14,7 +15,7 @@ lemmatizer = WordNetLemmatizer()
 with open("intents.json") as file:
     intents = json.load(file)
 
-# Descarga de los paquetes necesarios de NLTK
+# Descarga de los paquetes necesarios de NLTK (Natural Language Toolkit)
 nltk.download('punkt')
 nltk.download('wordnet')
 nltk.download('omw-1.4')
@@ -37,6 +38,8 @@ for intent in intents['intents']:
 words = [lemmatizer.lemmatize(word.lower()) for word in words if word not in ignore_letters]
 words = sorted(set(words))
 
+classes = sorted(set(classes))
+
 # Guarda las palabras y clases en archivos pickle
 pickle.dump(words, open("words.pkl", "wb"))
 pickle.dump(classes, open("classes.pkl", "wb"))
@@ -51,31 +54,35 @@ for document in documents:
     word_patterns = [lemmatizer.lemmatize(word.lower()) for word in word_patterns]
     for word in words:
         bag.append(1) if word in word_patterns else bag.append(0)
+
     output_row = list(output_empty)
     output_row[classes.index(document[1])] = 1
     training.append([bag, output_row])
+
+# Mezcla los datos de entrenamiento
+random.shuffle(training)
+training = np.array(training, dtype=object)
+
+train_x = np.array([item[0] for item in training])
+train_y = np.array([item[1] for item in training])
 
 # Verificar la consistencia de los datos antes de convertir a un array de NumPy
 print(f"Longitudes de bag: {[len(item[0]) for item in training]}")
 print(f"Longitudes de output_row: {[len(item[1]) for item in training]}")
 
-# Dividir los datos en entrada (X) y salida (y)
-X_train = np.array([item[0] for item in training])
-y_train = np.array([item[1] for item in training])
-
 # Define el modelo
 model = Sequential()
-model.add(Dense(128, input_shape=(len(X_train[0]),), activation='relu'))
+model.add(Dense(128, input_shape=(len(train_x[0]),), activation='relu'))
 model.add(Dropout(0.5))
 model.add(Dense(64, activation='relu'))
 model.add(Dropout(0.5))
-model.add(Dense(len(y_train[0]), activation='softmax'))
+model.add(Dense(len(train_y[0]), activation='softmax'))
 
 # Compila el modelo
 model.compile(loss='categorical_crossentropy', optimizer=SGD(learning_rate=0.01, momentum=0.9), metrics=['accuracy'])
 
 # Entrena el modelo
-model.fit(X_train, y_train, epochs=200, batch_size=5, verbose=1)
+model.fit(train_x, train_y, epochs=200, batch_size=5, verbose=1)
 
 # Guarda el modelo
 model.save('chatbot_model.h5')

@@ -33,7 +33,7 @@
         {
             "tag": "horario",
             "patterns": ["¿qué hora es?", "¿me puedes decir la hora?", "¿qué hora tienes?"],
-            "responses": ["Lo losiento, no tengo acceso a la hora actual. ¿Hay algo más en lo que pueda ayudarte?", "No puedo decirte la hora. ¿Te puedo ayudar con algo más?"]
+            "responses": ["Lo siento, no tengo acceso a la hora actual. ¿Hay algo más en lo que pueda ayudarte?", "No puedo decirte la hora. ¿Te puedo ayudar con algo más?"]
         },
         {
             "tag": "jokes",
