@@ -12,7 +12,7 @@ import random
 lemmatizer = WordNetLemmatizer()
 
 # Carga del archivo intents.json
-with open("intents.json") as file:
+with open("intents.json", encoding='utf-8') as file:
     intents = json.load(file)
 
 # Descarga de los paquetes necesarios de NLTK (Natural Language Toolkit)
@@ -63,8 +63,8 @@ for document in documents:
 random.shuffle(training)
 training = np.array(training, dtype=object)
 
-train_x = np.array([item[0] for item in training])
-train_y = np.array([item[1] for item in training])
+train_x = np.array([item[0] for item in training], dtype=np.float32)
+train_y = np.array([item[1] for item in training], dtype=np.float32)
 
 # Verificar la consistencia de los datos antes de convertir a un array de NumPy
 print(f"Longitudes de bag: {[len(item[0]) for item in training]}")
