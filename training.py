@@ -11,7 +11,7 @@ import random
 # Inicialización del lematizador
 lemmatizer = WordNetLemmatizer()
 
-# Carga del archivo intents.json
+# Carga del archivo intents.json (mantén la versión correcta)
 with open("intents.json", encoding='utf-8') as file:
     intents = json.load(file)
 
