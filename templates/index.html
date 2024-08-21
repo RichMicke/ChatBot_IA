@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChatMiguelon</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="chat-container">
+        <div class="chatbox" id="chatbox"></div>
+        <form id="chat-form">
+            <input type="text" id="user-input" class="chat-input" placeholder="Escribe un mensaje." autocomplete="off" required>
+            <button type="submit" class="chat-send">Enviar</button>
+        </form>
+    </div>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
