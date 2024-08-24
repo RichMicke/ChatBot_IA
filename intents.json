@@ -99,6 +99,68 @@
             "tag": "finanzas",
             "patterns": ["¿cómo puedo ahorrar dinero?", "dame consejos sobre inversiones", "¿qué es la criptomoneda?"],
             "responses": ["Para ahorrar dinero, es útil hacer un presupuesto y reducir gastos innecesarios. También considera invertir en un fondo de ahorros.", "Invertir en acciones, bonos o bienes raíces son opciones populares. Es importante hacer una investigación y consultar con un asesor financiero.", "La criptomoneda es una forma de moneda digital que utiliza criptografía para asegurar transacciones y controlar la creación de nuevas unidades."]
-        }
+        },   {
+            "tag": "impuestos",
+            "patterns": ["¿Cómo puedo declarar mis impuestos?", "Dame consejos para pagar menos impuestos", "¿Qué es el impuesto sobre la renta?"],
+            "responses": ["Para declarar tus impuestos, asegúrate de recopilar todos los documentos necesarios y consulta con un contador si es necesario.", "Puedes reducir tus impuestos aprovechando deducciones y créditos fiscales disponibles. Es recomendable consultar a un profesional.", "El impuesto sobre la renta es un impuesto que los gobiernos imponen sobre los ingresos generados por individuos y empresas."]
+        },
+        {
+            "tag": "presupuesto",
+            "patterns": ["¿Cómo hago un presupuesto?", "Dame consejos para manejar mi dinero", "¿Qué es un presupuesto personal?"],
+            "responses": ["Para hacer un presupuesto, comienza por listar todos tus ingresos y gastos. Luego, ajusta tus gastos para que no excedan tus ingresos.", "Manejar tu dinero de manera efectiva implica controlar tus gastos, ahorrar regularmente, y evitar deudas innecesarias.", "Un presupuesto personal es un plan que detalla cómo planeas gastar tu dinero, asegurando que puedas cubrir todas tus necesidades financieras."]
+        },
+        {
+            "tag": "crédito",
+            "patterns": ["¿Qué es una tarjeta de crédito?", "Dame consejos para mejorar mi puntaje crediticio", "¿Cómo funciona un préstamo?"],
+            "responses": ["Una tarjeta de crédito es una herramienta financiera que te permite pedir dinero prestado hasta un límite preaprobado para realizar compras.", "Para mejorar tu puntaje crediticio, paga tus deudas a tiempo, reduce tus saldos pendientes, y evita solicitar múltiples líneas de crédito.", "Un préstamo es una cantidad de dinero que un banco o prestamista te proporciona, y que deberás devolver con intereses en un plazo determinado."]
+        },
+        {
+            "tag": "inversiones",
+            "patterns": ["¿Cómo puedo invertir mi dinero?", "Dame opciones de inversión seguras", "¿Qué es una acción?"],
+            "responses": ["Puedes invertir tu dinero en acciones, bonos, bienes raíces o fondos mutuos. Considera tu tolerancia al riesgo antes de invertir.", "Las inversiones seguras incluyen bonos del gobierno, cuentas de ahorro de alto rendimiento, y certificados de depósito.", "Una acción es una unidad de propiedad en una empresa que te da derecho a una parte de sus ganancias y activos."]
+        },
+
+    {
+        "tag": "fútbol",
+        "patterns": ["¿Quién es el mejor jugador de fútbol?", "Dime sobre el Mundial de Fútbol", "¿Qué ligas de fútbol son famosas?"],
+        "responses": ["Lionel Messi y Cristiano Ronaldo son considerados dos de los mejores jugadores de fútbol de todos los tiempos.", "El Mundial de Fútbol es el torneo más prestigioso de este deporte, celebrado cada cuatro años.", "Ligas como la Premier League, La Liga y la Serie A son algunas de las más famosas en el mundo del fútbol."]
+    },
+    {
+        "tag": "baloncesto",
+        "patterns": ["¿Qué es la NBA?", "¿Quién es Michael Jordan?", "Dime sobre los equipos de baloncesto famosos"],
+        "responses": ["La NBA es la liga de baloncesto profesional más importante de Estados Unidos y una de las más reconocidas a nivel mundial.", "Michael Jordan es considerado por muchos como el mejor jugador de baloncesto de la historia, con seis campeonatos de la NBA.", "Los Chicago Bulls y Los Angeles Lakers son dos de los equipos más famosos en la historia del baloncesto."]
+    },
+    {
+        "tag": "tenis",
+        "patterns": ["¿Quiénes son los mejores tenistas?", "Dime sobre los torneos de Grand Slam", "¿Qué es el tenis?"],
+        "responses": ["Roger Federer, Rafael Nadal y Serena Williams son algunos de los mejores tenistas de la historia.", "Los torneos de Grand Slam, como Wimbledon y el Abierto de Estados Unidos, son los eventos más importantes en el mundo del tenis.", "El tenis es un deporte de raqueta que se juega entre dos jugadores (individuales) o dos parejas (dobles) en una cancha rectangular."]
+    },
+    {
+        "tag": "béisbol",
+        "patterns": ["¿Qué es la MLB?", "Dime sobre los Yankees de Nueva York", "¿Cómo se juega el béisbol?"],
+        "responses": ["La MLB, o Major League Baseball, es la liga de béisbol profesional más importante de Estados Unidos.", "Los Yankees de Nueva York son uno de los equipos más exitosos y reconocidos en la historia del béisbol.", "El béisbol es un deporte que se juega entre dos equipos de nueve jugadores cada uno, donde el objetivo es anotar carreras golpeando una pelota con un bate."]
+    }, {
+        "tag": "programación",
+        "patterns": ["¿Qué es la programación?", "Dime sobre los lenguajes de programación", "¿Cómo puedo aprender a programar?"],
+        "responses": ["La programación es el proceso de crear instrucciones que una computadora puede seguir para realizar tareas específicas.", "Algunos de los lenguajes de programación más populares incluyen Python, JavaScript, Java y C++.", "Puedes aprender a programar tomando cursos en línea, practicando con proyectos y utilizando recursos como documentación y tutoriales."]
+    },
+    {
+        "tag": "ciberseguridad",
+        "patterns": ["¿Qué es la ciberseguridad?", "Dame consejos para proteger mi información en línea", "¿Qué son los ataques cibernéticos?"],
+        "responses": ["La ciberseguridad se refiere a las prácticas diseñadas para proteger redes, dispositivos y datos de ataques y accesos no autorizados.", "Para proteger tu información en línea, utiliza contraseñas seguras, habilita la autenticación de dos factores y evita hacer clic en enlaces sospechosos.", "Los ataques cibernéticos son intentos maliciosos de acceder, dañar o alterar datos y sistemas. Ejemplos incluyen phishing, malware y ransomware."]
+    },
+    {
+        "tag": "internet de las cosas (IoT)",
+        "patterns": ["¿Qué es el Internet de las Cosas?", "Dime sobre dispositivos inteligentes", "¿Cómo funciona el IoT?"],
+        "responses": ["El Internet de las Cosas (IoT) se refiere a la interconexión de dispositivos físicos que pueden recopilar y compartir datos a través de internet.", "Dispositivos como termostatos inteligentes, cámaras de seguridad y electrodomésticos conectados son ejemplos de IoT.", "El IoT funciona mediante la conexión de dispositivos a internet, lo que les permite comunicarse entre sí y con otros sistemas para automatizar tareas y mejorar la eficiencia."]
+    },
+    {
+        "tag": "computación en la nube",
+        "patterns": ["¿Qué es la computación en la nube?", "Dime sobre servicios en la nube", "¿Cómo funciona la nube?"],
+        "responses": ["La computación en la nube es la entrega de servicios informáticos, como almacenamiento y procesamiento, a través de internet.", "Servicios como Amazon Web Services (AWS), Microsoft Azure y Google Cloud ofrecen plataformas en la nube para almacenamiento, análisis de datos y desarrollo de aplicaciones.", "La nube funciona al permitir que los usuarios accedan a recursos y aplicaciones a través de internet, sin necesidad de infraestructura física propia."]
+    }
+
+
+
     ]
 }
