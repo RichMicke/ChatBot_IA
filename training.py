@@ -11,6 +11,9 @@ import random
 # Inicialización del lematizador
 lemmatizer = WordNetLemmatizer()
 
+with open('intents.json') as file:
+    intents = json.load(file)
+
 # Descarga de los paquetes necesarios de NLTK (Natural Language Toolkit)
 nltk.download('punkt')
 nltk.download('wordnet')

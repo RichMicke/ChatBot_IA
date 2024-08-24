@@ -18,7 +18,7 @@ classes = pickle.load(open('classes.pkl', 'rb'))
 lemmatizer = WordNetLemmatizer()
 
 # Cargar las intenciones
-with open('intents.json') as file:
+with open('intents.json', encoding='utf-8') as file:
     intents = json.load(file)
 
 # Funcion para buscar en internet
