@@ -11,7 +11,8 @@ import random
 # Inicialización del lematizador
 lemmatizer = WordNetLemmatizer()
 
-with open('intents.json') as file:
+# Cargar el archivo intents.json
+with open('intents.json', encoding='utf-8') as file:
     intents = json.load(file)
 
 # Descarga de los paquetes necesarios de NLTK (Natural Language Toolkit)
@@ -19,7 +20,7 @@ nltk.download('punkt')
 nltk.download('wordnet')
 nltk.download('omw-1.4')
 
-#Cargar el modelo entrenado
+# Cargar el modelo entrenado
 model = load_model('chatbot_model.h5')
 
 words = []
