@@ -5,6 +5,7 @@ import json
 import pickle
 from keras.models import load_model
 import random
+import requests
 
 # Cargar el modelo entrenado
 model = load_model('chatbot_model.h5')
@@ -19,6 +20,24 @@ lemmatizer = WordNetLemmatizer()
 # Cargar las intenciones
 with open('intents.json') as file:
     intents = json.load(file)
+
+# Funcion para buscar en internet
+def buscar_en_internet(query):
+    url = f"https://api.duckduckgo.com/?q={query}&format=json"
+    response = requests.get(url)
+
+    if response.status_code == 200:
+        results = response.json().get(RelatedTopics, [])
+        if results:
+            first_result = results[0]
+            title = first_result.get("text")
+            link = first_result.get("firstURL")
+            return f"{title}\nMás informacion: {link}"
+        else:
+            return "Lo siento, no pude encontrar informacion sobre eso"
+    else:
+        return "Lo siento hubo un error al intentar buscar..."    
+   
 
 def clean_up_sentence(sentence):
     """Limpia y tokeniza la oración."""
@@ -47,6 +66,11 @@ def get_response(intents_list, predicted_class):
 
 def chatbot_response(msg):
     """Genera una respuesta del chatbot basada en el mensaje del usuario."""
+
+    if "buscar" in msg.lower():
+        query = msg.replace("buscar", "").strip()
+        return buscar_en_internet(query)
+    
     p = bow(msg, words, show_details=False)
     prediction = model.predict(np.array([p]))[0]
     max_index = np.argmax(prediction)

@@ -39,6 +39,66 @@
             "tag": "jokes",
             "patterns": ["cuéntame un chiste", "dime un chiste", "¿tienes algún chiste?"],
             "responses": ["¿Por qué los pájaros no usan Facebook? Porque ya tienen Twitter.", "¿Qué hace una abeja en el gimnasio? ¡Zum-ba!"]
+        },
+        {
+            "tag": "noticias",
+            "patterns": ["cuéntame las noticias", "¿qué está pasando en el mundo?", "dame noticias recientes"],
+            "responses": ["Lo siento, no puedo proporcionar noticias actuales. ¿Hay algo más en lo que pueda ayudarte?", "No tengo acceso a noticias en tiempo real. ¿Cómo puedo asistirte con otra cosa?"]
+        },
+        {
+            "tag": "recetas",
+            "patterns": ["¿puedes darme una receta?", "dame una receta de cocina", "¿cómo se hace una pizza?"],
+            "responses": ["Claro, aquí tienes una receta fácil de pizza: Mezcla 2 tazas de harina, 1 taza de agua, 1 cucharada de levadura y una pizca de sal. Amasa, deja reposar 1 hora, extiende la masa, añade tus ingredientes favoritos y hornea a 220°C por 15-20 minutos.", "¿Qué tipo de receta te gustaría? ¿Algo dulce o salado?"]
+        },
+        {
+            "tag": "consejos",
+            "patterns": ["dame un consejo", "¿tienes algún consejo para mí?", "recomiéndame algo"],
+            "responses": ["Siempre es bueno leer más libros. La lectura puede abrirte a nuevas perspectivas y conocimientos.", "No olvides tomar un momento para relajarte y cuidar de tu salud mental."]
+        },
+        {
+            "tag": "tecnologia",
+            "patterns": ["háblame de tecnología", "¿qué es la inteligencia artificial?", "¿qué novedades hay en tecnología?"],
+            "responses": ["La inteligencia artificial es un campo de la informática que se enfoca en crear sistemas capaces de realizar tareas que normalmente requieren inteligencia humana.", "En tecnología, algunas de las últimas novedades incluyen avances en inteligencia artificial, computación cuántica y nuevas innovaciones en dispositivos móviles."]
+        },
+        {
+            "tag": "cine",
+            "patterns": ["¿qué películas me recomiendas?", "háblame de una película popular", "dime algo sobre cine"],
+            "responses": ["Te recomiendo ver 'Inception', una película de ciencia ficción con una trama fascinante y efectos visuales impresionantes.", "Una película popular en este momento es 'The Marvels'. ¿Te interesa algún género en particular?"]
+        },
+        {
+            "tag": "salud",
+            "patterns": ["¿cómo puedo llevar una vida más saludable?", "dame consejos de salud", "¿qué alimentos son buenos para la salud?"],
+            "responses": ["Para llevar una vida saludable, asegúrate de comer una dieta equilibrada, hacer ejercicio regularmente y dormir bien. ¿Necesitas más consejos sobre salud específica?", "Incorporar frutas y verduras frescas a tu dieta es esencial para una buena salud. Además, beber suficiente agua y hacer ejercicio regularmente también es muy beneficioso."]
+        },
+        {
+            "tag": "viajes",
+            "patterns": ["¿cuáles son los mejores destinos para visitar?", "dame consejos para viajar", "¿qué necesito saber antes de viajar?"],
+            "responses": ["Algunos destinos populares incluyen París, Tokio y Nueva York. Depende de tus intereses, ¿qué tipo de viaje te gustaría?", "Antes de viajar, asegúrate de revisar los requisitos de visa, el clima del lugar y las recomendaciones de seguridad. También es útil conocer un poco sobre la cultura local."]
+        },
+        {
+            "tag": "musica",
+            "patterns": ["¿qué música me recomiendas?", "dime sobre un artista popular", "¿qué géneros musicales conoces?"],
+            "responses": ["Te recomiendo escuchar a Ed Sheeran, que tiene una gran variedad de canciones populares. ¿Prefieres algún género en particular?", "Conozco varios géneros musicales como pop, rock, jazz, y música clásica. ¿Cuál te interesa más?"]
+        },
+        {
+            "tag": "libros",
+            "patterns": ["¿qué libro me recomiendas?", "dime sobre un autor famoso", "¿qué libros son populares ahora?"],
+            "responses": ["Te recomiendo 'Cien años de soledad' de Gabriel García Márquez, un clásico de la literatura. ¿Tienes algún género que prefieras?", "Autores como J.K. Rowling y George R.R. Martin son muy populares. También puedes explorar las listas de bestsellers para encontrar libros interesantes."]
+        },
+        {
+            "tag": "deportes",
+            "patterns": ["¿cuál es tu deporte favorito?", "dime sobre un equipo famoso", "¿qué deportes son populares?"],
+            "responses": ["El fútbol es uno de los deportes más populares en el mundo. ¿Hay algún deporte específico que te interese?", "Equipos como el Real Madrid y los Chicago Bulls tienen mucha fama. ¿Te gustaría saber más sobre algún deporte en particular?"]
+        },
+        {
+            "tag": "tecnologia_avanzada",
+            "patterns": ["¿qué es la computación cuántica?", "dime sobre las últimas innovaciones tecnológicas", "¿cómo funciona el aprendizaje automático?"],
+            "responses": ["La computación cuántica es un área emergente que utiliza principios de la mecánica cuántica para procesar información. Es muy avanzada y prometedora.", "Las últimas innovaciones tecnológicas incluyen avances en inteligencia artificial, realidad aumentada y computación cuántica.", "El aprendizaje automático es una rama de la inteligencia artificial que permite a las máquinas aprender de datos y mejorar con el tiempo sin ser programadas explícitamente."]
+        },
+        {
+            "tag": "finanzas",
+            "patterns": ["¿cómo puedo ahorrar dinero?", "dame consejos sobre inversiones", "¿qué es la criptomoneda?"],
+            "responses": ["Para ahorrar dinero, es útil hacer un presupuesto y reducir gastos innecesarios. También considera invertir en un fondo de ahorros.", "Invertir en acciones, bonos o bienes raíces son opciones populares. Es importante hacer una investigación y consultar con un asesor financiero.", "La criptomoneda es una forma de moneda digital que utiliza criptografía para asegurar transacciones y controlar la creación de nuevas unidades."]
         }
     ]
 }

@@ -13,6 +13,10 @@ model = load_model('chatbot_model.h5')
 words = pickle.load(open('words.pkl', 'rb'))
 classes = pickle.load(open('classes.pkl', 'rb'))
 
+# Carga del archivo intents.json (mantén la versión correcta)
+with open("intents.json", encoding='utf-8') as file:
+    intents = json.load(file)
+
 # Inicializar el lematizador
 lemmatizer = WordNetLemmatizer()
 

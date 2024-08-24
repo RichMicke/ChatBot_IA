@@ -19,6 +19,10 @@ body {
     padding: 10px;
     overflow-y: scroll;
     margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
 }
 .chat-input {
     width: calc(100% - 100px);
@@ -31,4 +35,5 @@ body {
     color: white;
     border: none;
     cursor: pointer;
+    border-radius: 5px;
 }

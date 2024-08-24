@@ -3,7 +3,7 @@ import nltk
 from nltk.stem import WordNetLemmatizer
 import json
 import pickle
-from keras.models import Sequential
+from keras.models import Sequential, load_model
 from keras.layers import Dense, Dropout
 from keras.optimizers import SGD
 import random
@@ -11,14 +11,13 @@ import random
 # Inicialización del lematizador
 lemmatizer = WordNetLemmatizer()
 
-# Carga del archivo intents.json (mantén la versión correcta)
-with open("intents.json", encoding='utf-8') as file:
-    intents = json.load(file)
-
 # Descarga de los paquetes necesarios de NLTK (Natural Language Toolkit)
 nltk.download('punkt')
 nltk.download('wordnet')
 nltk.download('omw-1.4')
+
+#Cargar el modelo entrenado
+model = load_model('chatbot_model.h5')
 
 words = []
 classes = []
@@ -76,6 +75,7 @@ model.add(Dense(128, input_shape=(len(train_x[0]),), activation='relu'))
 model.add(Dropout(0.5))
 model.add(Dense(64, activation='relu'))
 model.add(Dropout(0.5))
+
 model.add(Dense(len(train_y[0]), activation='softmax'))
 
 # Compila el modelo
